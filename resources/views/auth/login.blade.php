@@ -1,52 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css">
+
+    <!-- Custom fonts for this template-->
+    <link href="{{ asset('theme/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('theme/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .login-container {
-            max-width: 300px;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .bg-login-image {
+            background: url('{{ asset('https://images.pexels.com/photos/5150078/pexels-photo-5150078.jpeg?auto=compress&cs=tinysrgb&w=600') }}');
+            background-position: center;
+            background-size: cover;
         }
     </style>
 </head>
-<body>
-    <div class="container login-container">
-        <form action="{{ route('login') }}" method="POST">
-            @csrf
-            <h2 class="text-center mb-4">Login</h2>
-            @if(Session::has('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{ Session::get('error') }}
+<body class="bg-gradient-primary">
+<div class="container">
+    <br><br>
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                @if(Session::has('error'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ Session::get('error') }}
+                                    </div>
+                                @endif
+                                <form action="{{ route('login') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email address</label>
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="password" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary">Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="text-center">
+                                    <a class="small" href="{{ route('register') }}">Don't have an account? Register now!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            @endif
-            <div class="mb-3">
-                <input type="email" class="form-control" placeholder="Email address" name="email" required>
             </div>
-            <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </div>
-        </form>
-        <br>
-        <div class="alert alert-danger text-center">
-            <small class="text">Not registered? <a href="{{ route('register') }}">Register Now</a></small>
         </div>
     </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{{ asset('theme/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('theme/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('theme/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('theme/js/sb-admin-2.min.js') }}"></script>
 </body>
 </html>

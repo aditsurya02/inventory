@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('theme/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -19,7 +19,14 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('theme/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    
+    <style>
+        .bg-register-image {
+            background: url('{{ asset('https://images.pexels.com/photos/2564496/pexels-photo-2564496.jpeg?auto=compress&cs=tinysrgb&w=600') }}');
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-primary">
